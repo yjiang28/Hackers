@@ -46,7 +46,7 @@ You can check out the details on setting up http-server [here](https://www.npmjs
 
 ### boiler plate code
 
-There's some boiler plate to make the demo just work but tutorial's designed in a way so you don't need to understand all of it, to complete the demo. Just focus on the important parts marked as **TODO** in `index.js` and `keys.js` files. Especially, the parts where we are making a request to  the Clarifai API and interacting with the response received from it.
+There's some boiler plate to make the demo just work but tutorial's designed in a way so you don't need to understand all of it, to complete the demo. Just focus on the important parts marked as **TODO** in `camera.js` and `keys.js` files. Especially, the parts where we are making a request to  the Clarifai API and interacting with the response received from it.
 
 ### Steps to complete this demo
 

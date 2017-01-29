@@ -1,25 +1,152 @@
 
-.App {
-  text-align: center;
+/*================ TITLE ================*/
+
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+html {
+    height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+    font-family: 'Fjalla One', sans-serif;
+    background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.container {
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 50%;
+    display: block;
+    position: absolute;
+    max-width: 225px;
 }
 
-.App-intro {
-  font-size: large;
+.button {
+    float: left;
+    position: relative;
+    bottom: -65px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    color: #e55643;
+    text-transform: uppercase;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+}
+.button span {
+    transform: skew(-10deg);
+    display: block;
+    float: left;
+    text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 42px;
+    margin: 0;
+    line-height: 47px;
+    letter-spacing: 2px;
+}
+
+.title {
+    transform: translateX(-50%) rotate(-10deg);
+    display: block;
+    float: left;
+    left: 50%;
+    position: relative;
+}
+.title span {
+    transform: skew(-10deg);
+    display: block;
+    float: left;
+    text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px, #533d4a 5px 5px, #533d4a 6px 6px;
+    min-width: 10px;
+    min-height: 10px;
+    position: relative;
+}
+
+.title:nth-child(1) {
+    color: #e55643;
+}
+.title:nth-child(2) {
+    color: #2b9f5e;
+}
+.title:nth-child(3) {
+    color: #f1c83c;
+}
+
+/*=========== LANGUAGE SCROLL ===========*/
+
+.langScroll input,
+.langScroll select,
+.langScroll label{
+    width: 100%;
+    padding: .625em;
+    margin: 0 0 .625em 0;
+    border: 1px solid #aaa;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.langDiv {
+    padding-top: 270px;
+}
+
+/*=========== BUTTON ===========*/
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+.buttons {
+    margin: 0;
+    padding: 0;
+    /*background: #ECF0F1;*/
+    font-family: "Montserrat";
+    text-align: center;
+}
+.buttons .canvas{
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 20px 1px #bbb;
+}
+
+.buttons {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: white;
+    width: 150px;
+    height: 70px;
+    background: #F2385A;
+    position: relative;
+    margin: 30px;
+    top: 100px;
+    padding: 16px;
+    font-size: 25px;
+    border-radius: 10px;
+    box-shadow: 0 15px 0 0 #f02046, 0 0 0px 0 transparent;
+    transition: all 0.2s;
+}
+
+.buttons a:active {
+    top: 108px;
+    box-shadow: 0 7px 0 0 #f02046;
+}
+
+.button1 {
+    background-color: #F2385A;
+}
+
+.button2 {
+    background-color: #3498DB;
+    box-shadow: 0 15px 0 0 #258cd1;
+}
+.button2:active {
+    box-shadow: 0 7px 0 0 #258cd1;
 }
