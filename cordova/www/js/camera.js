@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var appClarifai;
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -59,46 +61,9 @@ app.initialize();
 
 	// Finding a bunch of elements in the DOM
 	var app = $(".app")
-	var imageInput = $("#imageUrl");
-	var submitButton = $("#submitBtn");
 	var image = $("#image");
 	var tagsContainer = $(".tags-container");
 	var tags = $(".tags")
-
-	submitButton.on("click", function (event) {
-		// getting the input from the image
-		var url = imageInput.val()
-		tagsContainer.hide()
-
-		// You can ignore this part
-		// Set's the url of the image preview
-		image.attr("src", url)
-
-
-		/*
-		 * TODO
-		 * request Clarifai tag for the url by using Clarifai.getTagsByUrl
-		 */
-		Clarifai.getTagsByUrl(url, function (error, response) {
-			if (error){
-				displayError(error)
-			}
-			//Response is displayed here, use nuance to speak the response
-			else if (response){
-				console.log('-------');
-
-				var word = response.results[0].result.tag.classes[0];
-                console.log(word);
-				displayTag(response)
-				tts(null, word);
-			}
-		});
-		/*
-		 * TODO
-		 * request colors for the image by using Clarifai function to get *colors by url.
-		 */
-
-	})
 
 	/*
 	 * displayTag
@@ -133,36 +98,6 @@ app.initialize();
 
 		// displaying the hidden container
 		tagsContainer.show()
-
-	}
-
-
-	/*
-	 * assignColor
-	 * returns the color for progress bar based on the probability
-	 */
-	function assignColor (prob, index, length) {
-		if (prob > 0.9) {
-			return "success"
-		}
-		else if (prob > 0.85 && prob <= 0.9) {
-			return "info"
-		}
-		else {
-			return "warning"
-		}
-	}
-
-	// In case of error displays an error in the Clarifai
-	function displayError (error) {
-
-		// Preparing the error message
-		var errorMessage = "<p>" + error.status_msg + "</p>"
-		var errorHtml = "<div class='errorBox'><h1>Error ❌</h1>" + errorMessage + "</div>"
-
-		// throwing the errorHtml in .tags
-		tags.html(errorHtml)
-		tagsContainer.show()
 	}
 
 
@@ -179,16 +114,35 @@ app.initialize();
 			app.html("Enter your Clarifai's Client ID and Client Secret in order to successfully run this demo. Go to developer.clarifai.com, sign up and create your application if you haven't already. You'll have to edit keys.js file to enter your credentials")
 		}
 		else {
-			// TODO
-			// Initialize the Clarifai api here
-				app.show()
-				Clarifai.initialize({
-				clientId: clientId,
-				clientSecret: clientSecret
-				})
-
+            appClarifai = new Clarifai.App(
+                clientId,
+                clientSecret
+            );
 		}
-
-
 	}
+
+
+
+    Webcam.attach('#myCamera');
+
+	$("#takeSnapshot").on("click",function() {
+        take_snapshot();
+	});
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+            appClarifai.models.predict(Clarifai.GENERAL_MODEL, {base64: data_uri.replace(/^data\:image\/\w+\;base64\,/, '')}).then(
+                function(response) {
+                    var word = response.data.outputs[0].data.concepts[0].name;
+                    document.getElementById("print").innerHTML = word;
+                    tts(null, word);
+                },
+                function(err) {
+                    console.log(err);
+                }
+            );
+        });
+    }
+
+
+
 }(jQuery, Clarifai));
