@@ -1,0 +1,17 @@
+{
+  "name": "clarifai-beginner-javascript",
+  "version": "1.0.0",
+  "description": "A beginner Clarifai demo for javascript users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "clarifai",
+    "javascript",
+    "frontend",
+    "website"
+  ],
+  "author": "Hannan Ali (abdulhannanali@outlook.com)",
+  "license": "MIT"
+}
