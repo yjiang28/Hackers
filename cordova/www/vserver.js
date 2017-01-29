@@ -17,8 +17,9 @@ const PORT=3000;
 //We need a function which handles requests and send response
 function handleRequest(req, res){
     var url = req.url;
+    var method = req.method;
     console.log("dirname: "+path.join(__dirname,url));
-    //console.log(url);
+    console.log(method);
     switch(req.method)
     {
         case 'GET':
@@ -27,13 +28,20 @@ function handleRequest(req, res){
                 //console.log("slash");
                 renderFile(res, path.join(__dirname,'video.html'));
             }
-            else if(url == '/upload.html'){
+            /*else if(url == '/upload.html'){
                 console.log("option");
                 renderFile(res, path.join(__dirname,'upload.html'));
             }
+            */
             // else if (url == '/login') {console.log(path.join(__dirname, 'public','login.html'));renderFile(res, path.join(__dirname,'public','login.html'));console.log('read file end');}
             // else if (url == '/register') renderFile(res, path.join(__dirname,'public','register.html'));
             else renderFile(res, path.join(__dirname, url));
+            break;
+        case 'POST':
+            if (url=='url'){
+                req.data
+            }
+
             break;
         default:
             console.log('method has not according solution');
