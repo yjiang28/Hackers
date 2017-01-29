@@ -3,16 +3,39 @@
 		<title>Clarifai</title>
 		<!-- Bootstrap and styles are included here -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- Page-specific CSS -->
 		<link rel="stylesheet" href="css/camera.css">
+
+		<!-- Video Container-specific CSS -->
+		<meta charset="utf-8">
+		<meta name="description" content="WebRTC code samples">
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta id="theme-color" name="theme-color" content="#ffffff">
+		<base target="_blank">
+		<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/video.css">
+
 	</head>
 	<body>
+		<!--================== WEBCAM CONTAINER ====================-->
+		<div class="videoContainer">
+			<video id="video" autoplay></video>
+			<div class="select">
+				<label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+			</div>
+			<div class="select">
+				<label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
+			</div>
+			<div class="select">
+				<label for="videoSource">Video source: </label><select id="videoSource"></select>
+			</div>
+		</div>
+
+		<!--================== CLARIFAI STUFF ====================-->
 		<div class="container app">
 			<!-- Header stuff for the Clarifai -->
-			<div class="row">
-				<div class="col-sm-12">
-					<h1>Clarifai Application Demo</h1>
-				</div>
-			</div>
 			<div class="row inputForm">
 				<div class="col-sm-12">
 					<!-- Image url input -->
@@ -59,6 +82,13 @@
 		<script src="js/keys.js"></script>
 		<script src="js/camera.js"></script>
 
+		<!-- Video Player Scripts-->
+		<script src="js/lib/adapter-latest.js"></script>
+		<script src="js/lib/common.js"></script>
+		<script src="js/video.js"></script>
+		<script src="js/lib/ga.js"></script>
+
+		<!-- Helper Function -->
 		<script>
             function getQueryVariable(variable) {
                 var query = window.location.search.substring(1);
@@ -72,7 +102,7 @@
                 console.log('Query variable %s not found', variable);
             }
 
-            alert(getQueryVariable("lang"));
+            var language = getQueryVariable("lang");
 		</script>
 	</body>
 </html>
