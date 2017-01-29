@@ -116,6 +116,9 @@ app.initialize();
 		var tag 	= 	image.result.tag;
 		var word = tag["classes"][0];
 
+		console.log(word);
+		tts(null, word);
+
 		// Looping through all the classes in the tag using map
 		// to get the html for each concept
 		var concepts = tag.classes.slice(0,1).map(function (value) {

@@ -13,5 +13,8 @@
     "website"
   ],
   "author": "Hannan Ali (abdulhannanali@outlook.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "google-translate-api": "^2.2.2"
+  }
 }
