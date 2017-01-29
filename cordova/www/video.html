@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Video</title>
-    <script src="./video.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
@@ -103,12 +102,15 @@
             // Capture frame from live video stream.
             capture: function () {
                 var that = this;
+                alert("capture");
                 // Check if has stream.
                 if (localMediaStream) {
+
                     // Draw whatever is in the video element on to the canvas.
                     that.ctx.drawImage(video, 0, 0);
                     // Create a data url from the canvas image.
-                    dataURL = canvas.toDataURL('image/png');
+                    dataURL = canvas.toDataURL('image/png');alert("has stream");
+                    console.log("dataURL:"+dataURL);
                     // Call our method to save the data url to an image.
                     that.saveDataUrlToImage();
                 }
@@ -118,7 +120,7 @@
                 var that = this;
                 var options = {
                     // Change this to your own url.
-                    url: 'http://server.js'
+                    url: 'http://localhost:3000/url'
                 };
 
                 // Only place where we need jQuery to make an ajax request
