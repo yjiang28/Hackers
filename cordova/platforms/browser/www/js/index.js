@@ -114,34 +114,25 @@ app.initialize();
 		// Image has a further tag that contains classes, concept_ids and
 		// probabilities for each concept
 		var tag 	= 	image.result.tag
-
-		var conceptsLength = tag.classes.length
+		var word = tag["classes"][0];
 
 		// Looping through all the classes in the tag using map
 		// to get the html for each concept
-		var concepts = tag.classes.map(function (value, index, array) {
-			var prob = Number.parseFloat(tag.probs[index]);
-			var probPercentage = (prob * 100).toString() + "%";
+		var concepts = tag.classes.map(function () {
 
-			// Assigning color for the progressBar using `assignColor`
-			var progressBarColor = assignColor(prob, index, conceptsLength)
 
-			// Generating progress bar using values and a template
-			var progressBar = `<div class="progress">
-						<div class="progress-bar progress-bar-${progressBarColor}" role="progressbar" aria-valuenow="${prob}" aria-valuemin="0" aria-valuemax="100" style="width: ${probPercentage};">
-							${prob}
-						</div>
-					</div>`
+
 
 			// adding class and concept information
 			return `<div class="row">
 						<div class="col-sm-12">
-							<h3>${value}</h3>
-							<h4>Concept ID: ${tag["concept_ids"][index]}</h4>
-							${progressBar}
+							<h3>${word}</h3>
 						</div>
 					</div>`
 		})
+
+
+
 
 		// joining all the stuff generated and throwing the html into .tags
 		tags.html(concepts.join(""))
