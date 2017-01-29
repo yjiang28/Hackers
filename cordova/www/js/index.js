@@ -109,33 +109,22 @@ app.initialize();
 		 * in this case we only request one
 		 * so we just need to get the first one
 		 */
-		var image 	= 	response.results[0]
+		var image 	= 	response.results[0];
 
 		// Image has a further tag that contains classes, concept_ids and
 		// probabilities for each concept
-		var tag 	= 	image.result.tag
+		var tag 	= 	image.result.tag;
 		var word = tag["classes"][0];
 
 		// Looping through all the classes in the tag using map
 		// to get the html for each concept
-		var concepts = tag.classes.map(function () {
-
-
-
-
+		var concepts = tag.classes.slice(0,1).map(function (value) {
 			// adding class and concept information
-			return `<div class="row">
-						<div class="col-sm-12">
-							<h3>${word}</h3>
-						</div>
-					</div>`
-		})
-
-
-
+			return `<h3>${value}</h3>`;
+		});
 
 		// joining all the stuff generated and throwing the html into .tags
-		tags.html(concepts.join(""))
+		tags.html(concepts.join(""));
 
 		// displaying the hidden container
 		tagsContainer.show()
