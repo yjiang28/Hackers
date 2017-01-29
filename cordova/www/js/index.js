@@ -173,5 +173,6 @@ function animation() {
 
 
 	}
-}(jQuery, Clarifai));    $('#theme').trigger('change');
+	$('#theme').trigger('change');
+
 })(mobiscroll.$);
