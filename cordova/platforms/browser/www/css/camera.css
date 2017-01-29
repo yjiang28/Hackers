@@ -24,3 +24,9 @@
 	margin-right: auto;
 	margin-left: auto;
 }
+
+.camswap {
+	position: absolute;
+	top: 78%;
+	left: 0;
+}

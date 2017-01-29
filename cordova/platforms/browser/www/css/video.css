@@ -5,6 +5,12 @@
  *  that can be found in the LICENSE file in the root of the source
  *  tree.
  */
+
+body {
+    font-family: 'Fjalla One', sans-serif;
+    background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
+}
+
 .hidden {
     display: none;
 }
@@ -266,12 +272,77 @@ video {
     width: 12em;
     display: inline-block;
 }
+
+.videoContainer p{
+    color: white;
+    font-size: 20px;
+}
 #video {
     height: 85%;
 }
 
 .camswap {
     position: absolute;
-    top: 78%;
+    top: 72%;
     left: 0;
+}
+
+
+
+/*=========== BUTTON ===========*/
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+.buttons {
+    margin: 0;
+    padding: 0;
+    /*background: #ECF0F1;*/
+    font-family: "Montserrat";
+    text-align: center;
+}
+.buttons .canvas{
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 20px 1px #bbb;
+}
+
+.buttons {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: white;
+    width: 150px;
+    height: 70px;
+    background: #F2385A;
+    position: relative;
+    margin: 30px;
+    top: 100px;
+    padding: 16px;
+    font-size: 25px;
+    border-radius: 10px;
+    box-shadow: 0 15px 0 0 #f02046, 0 0 0px 0 transparent;
+    transition: all 0.2s;
+}
+
+.buttons a:active {
+    top: 108px;
+    box-shadow: 0 7px 0 0 #f02046;
+}
+
+.button1 {
+    background-color: #F2385A;
+}
+
+.button2 {
+    background-color: #3498DB;
+    box-shadow: 0 15px 0 0 #258cd1;
+}
+.button2:active {
+    box-shadow: 0 7px 0 0 #258cd1;
 }
