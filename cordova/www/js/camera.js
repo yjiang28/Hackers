@@ -80,14 +80,19 @@ app.initialize();
 		 * request Clarifai tag for the url by using Clarifai.getTagsByUrl
 		 */
 		Clarifai.getTagsByUrl(url, function (error, response) {
-		if (error){
-			displayError(error)
-		}
-		//Response is displayed here, use nuance to speak the response
-		else if (response){
-			displayTag(response)
-		}
-		})
+			if (error){
+				displayError(error)
+			}
+			//Response is displayed here, use nuance to speak the response
+			else if (response){
+				console.log('-------');
+
+				var word = response.results[0].result.tag.classes[0];
+                console.log(word);
+				displayTag(response)
+				tts(null, word);
+			}
+		});
 		/*
 		 * TODO
 		 * request colors for the image by using Clarifai function to get *colors by url.

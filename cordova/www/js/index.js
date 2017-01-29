@@ -49,36 +49,6 @@ function animation() {
 	var tagsContainer = $(".tags-container");
 	var tags = $(".tags")
 
-	submitButton.on("click", function (event) {
-		// getting the input from the image
-		var url = imageInput.val()
-		tagsContainer.hide()
-
-		// You can ignore this part
-		// Set's the url of the image preview
-		image.attr("src", url)
-
-
-		/*
-		 * TODO
-		 * request Clarifai tag for the url by using Clarifai.getTagsByUrl
-		 */
-		Clarifai.getTagsByUrl(url, function (error, response) {
-		if (error){
-			displayError(error)
-		}
-		//Response is displayed here, use nuance to speak the response
-		else if (response){
-			displayTag(response)
-		}
-		})
-		/*
-		 * TODO
-		 * request colors for the image by using Clarifai function to get *colors by url.
-		 */
-
-	})
-
 	/*
 	 * displayTag
 	 * functionality to display the tag with classes and probabilities
@@ -101,7 +71,7 @@ function animation() {
 		var word = tag["classes"][0];
 
 		console.log(word);
-		tts(null, word);
+
 
 		// Looping through all the classes in the tag using map
 		// to get the html for each concept
