@@ -1,62 +1,71 @@
-<html>
-	<head>
-		<title>Clarifai</title>
-		<!-- Bootstrap and styles are included here -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/styles.css">
-	</head>
-	<body>
-		<div class="container app">
-			<!-- Header stuff for the Clarifai -->
-			<!-- Feel free to ignore this part -->
-			<div class="row">
-				<div class="col-sm-12">
-					<h1>Clarifai Application Demo</h1>
-				</div>
-			</div>
-			<div class="row inputForm">
-				<div class="col-sm-12">
-					<!-- Image url input -->
-					<h1>Submit the image</h1>
-					<div class="form-group">
-						<input class="form-control" type="text" id="imageUrl" name="imageUrl">
-					</div>
-					<div class="form-group">
-						<button id="submitBtn" class="btn btn-primary">Submit</button>
-					</div>
-				</div>
-			</div>
-			<!-- Image Preview for the Clarifai Image Being loaded -->
-			<div class="row imagePreview">
-				<div class="col-sm-12">
-					<h2>Image preview</h2>
-					<img class="img-responsive" id="image" src="//i.imgur.com/O5RzPOu.png" alt="preview image">
-				</div>
-			</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-			<!-- Cotains the tag for the image including the error occured while parsing the image -->
-			<div class="row tags-container" style="display: none;">
-					<div class="col-sm-12">
-						<h1><span class="label label-primary">Tag</span></h1>
-						<div class="well well-lg">
-							<div class="row ">
-								<div class="col-sm-12 tags">
-									<!-- tags go here -->
-								</div>
-							</div>
-						</div>
-					</div>
-			</div>
-		</div>
+    <title>Welome</title>
 
-		
-		<!-- JavaScript Libraries including jQuery, Bootstrap -->
-		<script src="https://cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<!-- JavaScript Libraries script end -->
+    <!-- Mobiscroll CSS Includes -->
+    <link href="css/mobiscroll/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.icons.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.frame.android-holo.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.frame.ios.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.frame.jqm.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.scroller.android-holo.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.scroller.jqm.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.scroller.wp.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.image.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css" />
 
-		<!-- Clarifai's open source JavaScript SDK available at https://github.com/Clarifai/clarifai-javascript -->
-		<script src="https://sdk.clarifai.com/js/clarifai-1.2.1.js"></script>
+    <!-- Custom CSS -->
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+    <section class="container">
+        <h1>
+            <span class="title">This is</span>
+            <span class="title">a long</span>
+            <span class="title">long title</span>
+        </h1>
+        <!--<div class="button">restart</div>-->
+    </section>
+
+    <div class="langDiv">
+        <label class="langScroll" style="width: 100%; padding-top: 50%">
+            <input id="test" value="French"/>
+        </label>
+    </div>
+
+    <div class="buttons">
+        <a class="button1" href="camera.html" onclick="location.href=this.href+'?lang='+getLang();return false;">Translate</a>
+    </div>
+
+
+    <!-- Libraries -->
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/jquery.lettering.min.js"></script>
+    <script src="js/lib/TweenMax.min.js"></script>
+
+    <!-- Mobiscroll JS Includes -->
+    <script src="js/mobiscroll/mobiscroll.dom.js"></script>
+    <script src="js/mobiscroll/mobiscroll.core.js"></script>
+    <script src="js/mobiscroll/mobiscroll.scrollview.js"></script>
+    <script src="js/mobiscroll/mobiscroll.frame.js"></script>
+    <script src="js/mobiscroll/mobiscroll.frame.ios.js"></script>
+    <script src="js/mobiscroll/mobiscroll.frame.jqm.js"></script>
+    <script src="js/mobiscroll/mobiscroll.frame.wp.js"></script>
+    <script src="js/mobiscroll/mobiscroll.frame.android-holo.js"></script>
+    <script src="js/mobiscroll/mobiscroll.scroller.js"></script>
+    <script src="js/mobiscroll/mobiscroll.android-holo-light.js"></script>
+
+    <!-- Languages -->
+    <script src="js/mobiscroll/mobiscroll.i18n.en-UK.js"></script>
 
 		<!-- nuance js -->
 		<script src="./js/jquery.min.js"></script>
@@ -67,14 +76,14 @@
 		<script src="./js/configuration.js"></script>
 		<script src="./js/app.js"></script>
 
+    <!-- Custom JS -->
+    <script src="js/index.js"></script>
 
-		<!-- Personal scripts -->
+    <script>
+        function getLang(){
+            return document.getElementById('test').value;
+        }
+    </script>
 
-
-		<script src="./js/keys.js"></script>
-		<script src="./js/index.js"></script>
-		<!--<script src="clarifai-javascript-demo-master/cordova/www/js/index.js"></script>-->
-
-		<!-- Personal scripts end -->
-	</body>
+</body>
 </html>

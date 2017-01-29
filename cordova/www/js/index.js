@@ -1,61 +1,45 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+/**
+ * Created by alexmadrzyk on 1/29/17.
  */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
+<!--=========== TITLE ===========-->
+$(document).ready(function() {
+    $(".title").lettering();
+});
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+$(document).ready(function() {
+    animation();
+}, 1000);
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+function animation() {
+    var title1 = new TimelineMax();
+    title1.to(".button", 0, {visibility: 'hidden', opacity: 0})
+    title1.staggerFromTo(".title span", 0.5,
+        {ease: Back.easeOut.config(1.7), opacity: 0, bottom: -80},
+        {ease: Back.easeOut.config(1.7), opacity: 1, bottom: 0}, 0.05);
+    title1.to(".button", 0.2, {visibility: 'visible' ,opacity: 1})
+}
 
-        console.log('Received Event: ' + id);
+
+<!--=========== LANGUAGE SCROLL ===========-->
+(function ($) {
+    function init() {
+        mobiscroll.scroller('#test', {
+            theme: "android-holo-light",
+            // theme: "ios",
+            display: "inline",
+            lang: "en",
+            wheels: [
+                [{
+                    label: 'First wheel',
+                    data: ['French', 'Spanish', 'Polish', 'Chinese (Simplified)']
+                }]
+            ]
+        });
+
+        $('#test').css("display", "none");
     }
-};
-
-app.initialize();
-
-/*
- * index.js
- * Clarifai Basic Application demo code
- * You can reference Clarifai's JavaScript library to
- * complete this demo available at
- * https://github.com/Clarifai/clarifai-javascript
- */
-(function ($, Clarifai) {
-	$(document).ready(function () {
-		initialize()
-	})
+    init();
 
 	// Finding a bunch of elements in the DOM
 	var app = $(".app")
@@ -189,4 +173,5 @@ app.initialize();
 
 
 	}
-}(jQuery, Clarifai));
+}(jQuery, Clarifai));    $('#theme').trigger('change');
+})(mobiscroll.$);

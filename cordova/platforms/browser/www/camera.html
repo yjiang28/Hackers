@@ -1,0 +1,134 @@
+<html>
+	<head>
+		<title>Clarifai</title>
+		<!-- Bootstrap and styles are included here -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- Page-specific CSS -->
+		<link rel="stylesheet" href="css/camera.css">
+
+		<!-- Video Container-specific CSS -->
+		<meta charset="utf-8">
+		<meta name="description" content="WebRTC code samples">
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta id="theme-color" name="theme-color" content="#ffffff">
+		<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/video.css">
+
+	</head>
+	<body>
+		<!--================== WEBCAM CONTAINER ====================-->
+		<div class="videoContainer">
+			<video id="video" autoplay></video>
+			<a id="click" href="#" target="" onclick="loopThroughCameras();">
+				<img class="camSwap" src="img/swap.png" alt="swap" width="50px"/>
+			</a>
+			<div class="select" style="display: none">
+				<label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+			</div>
+			<div class="select" style="display: none">
+				<label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
+			</div>
+			<div class="select" style="display: none">
+				<label for="videoSource">Video source: </label><select id="videoSource"></select>
+			</div>
+			<p>The camera is <span id="print"></span>.</p>
+		</div>
+
+		<!--================== CLARIFAI STUFF ====================-->
+		<div class="container app">
+			<!-- Header stuff for the Clarifai -->
+			<div class="row inputForm">
+				<div class="col-sm-12">
+					<!-- Image url input -->
+					<h1>Submit the image</h1>
+					<div class="form-group">
+						<input class="form-control" type="text" id="imageUrl" name="imageUrl">
+					</div>
+					<div class="form-group">
+						<button id="submitBtn" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+			<!-- Image Preview for the Clarifai Image Being loaded -->
+			<div class="row imagePreview">
+				<div class="col-sm-12">
+					<h2>Image preview</h2>
+					<img class="img-responsive" id="image" src="//i.imgur.com/O5RzPOu.png" alt="preview image">
+				</div>
+			</div>
+
+			<!-- Cotains the tag for the image including the error occured while parsing the image -->
+			<div class="row tags-container" style="display: none;">
+				<div class="col-sm-12">
+					<div class="well well-lg">
+						<div class="row ">
+							<div class="col-sm-12 tags" >
+								<h3 id="tag"></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<!-- JavaScript Libraries including jQuery, Bootstrap -->
+		<script src="https://cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<!-- Clarifai's open source JavaScript SDK available at https://github.com/Clarifai/clarifai-javascript -->
+		<script src="https://sdk.clarifai.com/js/clarifai-1.2.1.js"></script>
+
+		<!-- Personal scripts -->
+		<script src="js/keys.js"></script>
+		<script src="js/camera.js"></script>
+
+		<!-- Video Player Scripts-->
+		<script src="js/lib/adapter-latest.js"></script>
+		<script src="js/lib/common.js"></script>
+		<script src="js/video.js"></script>
+		<script src="js/lib/ga.js"></script>
+
+		<!-- Helper Function -->
+		<script>
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split('&');
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split('=');
+                    if (decodeURIComponent(pair[0]) == variable) {
+                        return decodeURIComponent(pair[1]);
+                    }
+                }
+                console.log('Query variable %s not found', variable);
+            }
+
+            var language = getQueryVariable("lang");
+		</script>
+
+		<script>
+
+            var myArray;
+            var myIndex;
+            var print;
+
+            document.addEventListener('DOMContentLoaded', function() {
+                myArray = document.getElementById("videoSource").options;
+                myIndex = 0;
+                print = document.getElementById('print');
+                print.innerHTML = myArray[0].text;
+            }, false);
+
+            function loopThroughCameras(){
+                myArray = document.getElementById("videoSource").options;
+                myIndex = (myIndex+1)%(myArray.length);
+                print.innerHTML = myArray[myIndex].text;
+
+                // Update actual camera selection
+                document.getElementById("videoSource").text = myArray[myIndex].text;
+            }
+		</script>
+	</body>
+</html>
